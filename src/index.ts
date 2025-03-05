@@ -1,4 +1,4 @@
-const slugger = (text: string): string => {
+const slugger = async (text: string): Promise<string> => {
   const transliterateMap: Record<string, string> = {
     а: 'a',
     б: 'b',
