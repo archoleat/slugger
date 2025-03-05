@@ -38,7 +38,11 @@ const slugger = async (text: string): Promise<string> => {
   return text
     .toLowerCase()
     .split('')
-    .map((character) => transliterateMap[character] ?? '-')
+    .map((character) => {
+      if (transliterateMap[character]) return transliterateMap[character];
+      if (/[0-9]/.test(character)) return character;
+      return '-';
+    })
     .join('')
     .replace(/[-]+/g, '-')
     .replace(/^-|-$/g, '');
