@@ -43,7 +43,7 @@
     "@archoleat/prettier-define-config": "^1.1.0",
     "@archoleat/semantic-release-define-config": "^1.2.0",
     "@commitlint/cli": "^19.6.1",
-    "@commitlint/config-conventional": "^19.6.0",
+    "@commitlint/config-conventional": "^19.7.1",
     "@commitlint/types": "^19.5.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
