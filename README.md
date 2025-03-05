@@ -1,5 +1,6 @@
 # Archoleat Slugger
 
+![NPM Version](https://img.shields.io/npm/v/%40archoleat%2Fslugger)
 ![Specs](https://img.shields.io/github/actions/workflow/status/archoleat/slugger/spec.yaml?label=Specs)
 ![Commitlint](https://img.shields.io/github/actions/workflow/status/archoleat/slugger/commitlint.yaml?label=Commitlint)
 ![Editorconfig](https://img.shields.io/github/actions/workflow/status/archoleat/slugger/editorconfig.yaml?label=Editorconfig)
