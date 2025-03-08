@@ -1,4 +1,4 @@
-# Archoleat Slugger
+# Slugger
 
 ![NPM Version](https://img.shields.io/npm/v/%40archoleat%2Fslugger)
 ![NPM Downloads](https://img.shields.io/npm/dm/%40archoleat%2Fslugger)
