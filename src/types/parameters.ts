@@ -1,3 +1,5 @@
+type HAfterParameters = 'k' | 'z' | 'c' | 's' | 'e' | 'h';
+
 type Parameters = {
   text: string;
   config?: {
@@ -8,7 +10,8 @@ type Parameters = {
     ц?: 'c' | 'ts';
     щ?: 'shch' | 'sch' | 'shh';
     э?: 'eh' | 'e';
+    hAfter?: Array<HAfterParameters> | 'always';
   };
 };
 
-export type { Parameters };
+export type { HAfterParameters,Parameters };

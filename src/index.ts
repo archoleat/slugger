@@ -1,15 +1,15 @@
-import { Parameters } from '#types/parameters.ts';
+import { HAfterParameters,Parameters } from '#types/parameters.ts';
 
 const slugger = async (parameters: Parameters): Promise<string> => {
   const { text, config = {} } = parameters;
   const {
-    // letterCase = 'lower',
     splitWords = '-',
     ё = 'yo',
     й = 'j',
     ц = 'c',
     щ = 'shch',
     э = 'eh',
+    hAfter = ['k', 'z', 'c', 's', 'e', 'h'],
   } = config;
 
   const transliterateMap: Record<string, string> = {
@@ -57,24 +57,20 @@ const slugger = async (parameters: Parameters): Promise<string> => {
         const previousCharacter =
           accumulator.length > 0 ? accumulator[accumulator.length - 1] : null;
 
-        if (
-          previousCharacter &&
-          ['k', 'z', 'c', 's', 'e', 'h'].includes(previousCharacter)
-        ) {
-          replacedCharacters = ['k', 'h'];
-        } else {
-          replacedCharacters = ['h'];
-        }
-      } else {
-        let replacement: string;
+        const shouldUseKh = () => {
+          if (hAfter === 'always') return true;
+          if (!previousCharacter) return false;
 
-        if (transliterateMap[currentCharacter]) {
-          replacement = transliterateMap[currentCharacter];
-        } else if (/\d/.test(currentCharacter)) {
-          replacement = currentCharacter;
-        } else {
-          replacement = splitWords;
-        }
+          const allowedChars = hAfter;
+
+          return allowedChars.includes(previousCharacter as HAfterParameters);
+        };
+
+        replacedCharacters = shouldUseKh() ? ['k', 'h'] : ['h'];
+      } else {
+        const replacement: string =
+          transliterateMap[currentCharacter] ??
+          (/\d/.test(currentCharacter) ? currentCharacter : splitWords);
 
         replacedCharacters = replacement.split('');
       }
