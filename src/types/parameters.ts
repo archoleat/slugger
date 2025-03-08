@@ -14,4 +14,4 @@ type Parameters = {
   };
 };
 
-export type { HAfterParameters,Parameters };
+export type { HAfterParameters, Parameters };

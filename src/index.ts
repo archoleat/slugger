@@ -1,4 +1,4 @@
-import { HAfterParameters,Parameters } from '#types/parameters.ts';
+import { HAfterParameters, Parameters } from '#types/parameters.ts';
 
 const slugger = async (parameters: Parameters): Promise<string> => {
   const { text, config = {} } = parameters;
