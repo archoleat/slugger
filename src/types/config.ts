@@ -1,6 +1,6 @@
-type HAfterParameters = 'k' | 'z' | 'c' | 's' | 'e' | 'h';
+type HAfterConfig = 'k' | 'z' | 'c' | 's' | 'e' | 'h';
 
-type Parameters = {
+type Config = {
   letterCase?: 'lower' | 'upper';
   splitWords?: '-' | '_' | ' ' | '.';
   ё?: 'yo' | 'e';
@@ -8,7 +8,7 @@ type Parameters = {
   ц?: 'c' | 'ts';
   щ?: 'shch' | 'sch' | 'shh';
   э?: 'eh' | 'e';
-  hAfter?: Array<HAfterParameters> | 'always';
+  hAfter?: Array<HAfterConfig> | 'always';
 };
 
-export type { HAfterParameters, Parameters };
+export type { Config, HAfterConfig };

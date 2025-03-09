@@ -1,8 +1,8 @@
 import { HYPHEN_REGEX, HYPHENS_REGEX } from '@archoleat/reglib';
 
-import { HAfterParameters, Parameters } from '#types/parameters.ts';
+import { Config, HAfterConfig } from '#types/config.ts';
 
-const slugger = async (text: string, config: Parameters = {}): Promise<string> => {
+const slugger = async (text: string, config: Config = {}): Promise<string> => {
   const {
     // letterCase = 'lower',
     splitWords = '-',
@@ -65,7 +65,7 @@ const slugger = async (text: string, config: Parameters = {}): Promise<string> =
 
           const allowedCharacters = hAfter;
 
-          return allowedCharacters.includes(previousCharacter as HAfterParameters);
+          return allowedCharacters.includes(previousCharacter as HAfterConfig);
         };
 
         replacedCharacters = shouldUseKh() ? ['k', 'h'] : ['h'];
