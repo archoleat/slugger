@@ -63,9 +63,9 @@ const slugger = async (text: string, config: Parameters = {}): Promise<string> =
           if (hAfter === 'always') return true;
           if (!previousCharacter) return false;
 
-          const allowedChars = hAfter;
+          const allowedCharacters = hAfter;
 
-          return allowedChars.includes(previousCharacter as HAfterParameters);
+          return allowedCharacters.includes(previousCharacter as HAfterParameters);
         };
 
         replacedCharacters = shouldUseKh() ? ['k', 'h'] : ['h'];
