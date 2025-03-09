@@ -59,7 +59,7 @@ const slugger = async (text: string, config: Config = {}): Promise<string> => {
         const previousCharacter =
           accumulator.length > 0 ? accumulator[accumulator.length - 1] : null;
 
-        const shouldUseKh = () => {
+        const shouldUseH = () => {
           if (hAfter === 'always') return true;
           if (!previousCharacter) return false;
 
@@ -68,7 +68,7 @@ const slugger = async (text: string, config: Config = {}): Promise<string> => {
           return allowedCharacters.includes(previousCharacter as HAfterConfig);
         };
 
-        replacedCharacters = shouldUseKh() ? ['k', 'h'] : ['h'];
+        replacedCharacters = shouldUseH() ? ['k', 'h'] : ['h'];
       } else {
         const replacement: string =
           transliterateMap[currentCharacter] ??
