@@ -15,6 +15,7 @@ const outputFile = `${fileName}.js`;
 
 export default defineConfig([
   {
+    external: ['@archoleat/reglib'],
     plugins: [typescript(), minify()],
     input: `${sourceFolder}/${entryFile}`,
     output: {

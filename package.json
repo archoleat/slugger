@@ -45,6 +45,9 @@
   "scripts": {
     "init": "bun i && husky"
   },
+  "dependencies": {
+    "@archoleat/reglib": "^1.9.0"
+  },
   "devDependencies": {
     "@archoleat/commitlint-define-config": "^1.1.0",
     "@archoleat/eslint-flat-compatibility": "^1.2.1",

@@ -1,8 +1,10 @@
+import { HYPHEN_REGEX, HYPHENS_REGEX } from '@archoleat/reglib';
+
 import { HAfterParameters, Parameters } from '#types/parameters.ts';
 
-const slugger = async (parameters: Parameters): Promise<string> => {
-  const { text, config = {} } = parameters;
+const slugger = async (text: string, config: Parameters = {}): Promise<string> => {
   const {
+    // letterCase = 'lower',
     splitWords = '-',
     ё = 'yo',
     й = 'j',
@@ -80,8 +82,8 @@ const slugger = async (parameters: Parameters): Promise<string> => {
       return accumulator;
     }, [])
     .join('')
-    .replace(/-+/g, splitWords)
-    .replace(/(^-|-$)/g, '');
+    .replace(HYPHEN_REGEX, splitWords)
+    .replace(HYPHENS_REGEX, '');
 };
 
 export { slugger };

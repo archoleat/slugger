@@ -22,6 +22,18 @@
 bun i -D @archoleat/slugger
 ```
 
+```shell
+pnpm i -D @archoleat/slugger
+```
+
+```shell
+npm i -D @archoleat/slugger
+```
+
+```shell
+yarn add @archoleat/slugger --dev
+```
+
 ## Usage
 
 ```js
