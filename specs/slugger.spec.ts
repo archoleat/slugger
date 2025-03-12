@@ -1,6 +1,7 @@
 import { describe, expect, test as spec } from 'bun:test';
 
 import { slugger } from '#src/index.ts';
+import type { Config } from '#types/config.ts';
 
 describe('Slugger Function', () => {
   spec('should transliterate cyrillic text', async () => {
@@ -11,7 +12,7 @@ describe('Slugger Function', () => {
       },
       {
         text: 'кх зх сх ех хх',
-        output: 'kkh-zkh-skh-ekh-hkh',
+        output: 'kkh-zkh-skh-ekh-khkh',
       },
       {
         text: 'ах мх',
@@ -29,30 +30,39 @@ describe('Slugger Function', () => {
         text: 'хлеб',
         output: 'hleb',
       },
+      {
+        text: 'хрю',
+        output: 'hryu',
+      },
     ];
 
-    specs.forEach(async ({ text, output }) => {
+    for (const { text, output } of specs) {
       expect(await slugger(text)).toBe(output);
-    });
+    }
   });
 
   spec('should handle letter case', async () => {
     const specs = [
       {
         text: 'ХоЛоСცЫй ТЕКСТ',
-        config: { letterCase: 'lower' },
+        config: { letterCase: 'lower' } as Config,
         output: 'holostyj-tekst',
       },
       {
         text: 'Смешанный Регистр',
-        config: { letterCase: 'initial' },
+        config: { letterCase: 'initial' } as Config,
         output: 'Smeshannyj-Registr',
+      },
+      {
+        text: 'ПЕРВЫЙ СИМВОЛ',
+        config: { letterCase: 'initial' } as Config,
+        output: 'Pervyj-Simvol',
       },
     ];
 
-    specs.forEach(async ({ text, output, config }) => {
+    for (const { text, output, config } of specs) {
       expect(await slugger(text, config)).toBe(output);
-    });
+    }
   });
 
   spec('should support custom replacements', async () => {
@@ -63,7 +73,7 @@ describe('Slugger Function', () => {
           ё: 'e',
           щ: 'sch',
           ц: 'ts',
-        },
+        } as Config,
         output: 'tsirk-ezh-schuka',
       },
       {
@@ -71,8 +81,8 @@ describe('Slugger Function', () => {
         config: {
           э: 'e',
           й: 'y',
-        },
-        output: 'eh-yogurt',
+        } as Config,
+        output: 'e-yogurt',
       },
       {
         text: 'Щука цыпленок',
@@ -80,62 +90,77 @@ describe('Slugger Function', () => {
           щ: 'shh',
           Щ: 'Shh',
           ц: 'ts',
-        },
+        } as Config,
         output: 'shhuka-tsyplenok',
+      },
+      {
+        text: 'Цезарь',
+        config: { ц: 'ts' } as Config,
+        output: 'tsezar',
       },
     ];
 
-    specs.forEach(async ({ text, output, config }) => {
+    for (const { text, output, config } of specs) {
       expect(await slugger(text, config)).toBe(output);
-    });
+    }
   });
 
   spec('should handle custom separators', async () => {
     const specs = [
       {
         text: 'Разделители Слов',
-        config: { splitWords: '_' },
+        config: { splitWords: '_' } as Config,
         output: 'razdeliteli_slov',
       },
       {
         text: 'Много   пробелов',
-        config: { splitWords: ' ' },
-        output: 'mnogo   probelov',
+        config: { splitWords: ' ' } as Config,
+        output: 'mnogo probelov',
       },
       {
         text: 'Спец.символы',
-        config: { splitWords: '.' },
+        config: { splitWords: '.' } as Config,
         output: 'spec.simvoly',
+      },
+      {
+        text: 'Дефис-в-слове',
+        config: {},
+        output: 'defis-v-slove',
       },
     ];
 
-    specs.forEach(async ({ text, output, config }) => {
+    for (const { text, output, config } of specs) {
       expect(await slugger(text, config)).toBe(output);
-    });
+    }
   });
 
   spec('should handle hAfter configuration', async () => {
     const specs = [
       {
         text: 'х кх зхх',
-        config: { hAfter: 'always' },
-        output: 'kh-kkh-zkhh',
+        config: { hAfter: 'always' } as Config,
+        output: 'kh-kh-zkhh',
       },
       {
         text: 'кх ах мх',
-        config: { hAfter: ['k'] },
+        config: { hAfter: ['k'] } as Config,
         output: 'kkh-ah-mh',
       },
       {
         text: 'ххх',
-        config: { hAfter: ['s', 'h'] },
+        config: { hAfter: ['s', 'h'] } as Config,
         output: 'hhkh',
+      },
+      {
+        text: 'шх хш',
+        config: { hAfter: ['sh'] } as Config,
+        output: 'shh-hsh',
       },
     ];
 
-    specs.forEach(async ({ text, output, config }) => {
+    for (const { text, output, config } of specs) {
       expect(await slugger(text, config)).toBe(output);
-    });
+    }
   });
 
   spec('should handle edge cases', async () => {
@@ -145,23 +170,29 @@ describe('Slugger Function', () => {
       { text: '123', output: '123' },
       {
         text: 'Привет Мир',
-        config: { letterCase: 'initial' },
+        config: { letterCase: 'initial' } as Config,
         output: 'Privet-Mir',
       },
       {
         text: 'Спец_символы!',
-        config: { splitWords: '.' },
+        config: { splitWords: '.' } as Config,
         output: 'spec.simvoly',
       },
       {
         text: 'Тест--двойной--дефис',
-        config: {},
+        config: {} as Config,
         output: 'test-dvojnoj-defis',
+      },
+      {
+        text: 'Ёлка',
+        output: 'yolka',
       },
     ];
 
-    specs.forEach(async ({ text, output, config }) => {
-      expect(await slugger(text, config)).toBe(output);
-    });
+    for (const { text, output, config } of specs) {
+      config
+        ? expect(await slugger(text, config)).toBe(output)
+        : expect(await slugger(text)).toBe(output);
+    }
   });
 });

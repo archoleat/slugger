@@ -2,7 +2,7 @@ import { HYPHEN_REGEX, HYPHENS_REGEX } from '@archoleat/reglib';
 
 import { Config, HAfterConfig } from '#types/config.ts';
 
-const slugger = async (text: string, config: Config = {}): Promise<string> => {
+const slugger = async (string: string, config: Config = {}): Promise<string> => {
   const {
     letterCase = 'lower',
     splitWords = '-',
@@ -86,42 +86,48 @@ const slugger = async (text: string, config: Config = {}): Promise<string> => {
     Я: 'Ya',
   };
 
-  const formattedText = text
-    .split('')
-    .reduce((accumulator: string[], currentCharacter) => {
-      let replacedCharacters: string[];
+  const formatterHAfter = (accumulator: HAfterConfig, currentCharacter: string) => {
+    if (currentCharacter === 'х') {
+      const previousCharacter =
+        accumulator.length > 0 ? accumulator[accumulator.length - 1] : null;
 
-      if (currentCharacter === 'х') {
-        const previousCharacter =
-          accumulator.length > 0 ? accumulator[accumulator.length - 1] : null;
+      const shouldUseH = () => {
+        if (hAfter === 'always') return true;
 
-        const shouldUseH = () => {
-          if (hAfter === 'always') return true;
-          if (!previousCharacter) return false;
+        return previousCharacter && hAfter.includes(previousCharacter);
+      };
 
-          const allowedCharacters = hAfter;
-
-          return allowedCharacters.includes(previousCharacter as HAfterConfig);
-        };
-
-        replacedCharacters = shouldUseH() ? ['k', 'h'] : ['h'];
-      } else {
-        const replacement: string =
-          transliterateMap[currentCharacter] ??
-          (/\d/.test(currentCharacter) ? currentCharacter : splitWords);
-
-        replacedCharacters = replacement.split('');
-      }
+      const replacedCharacters = shouldUseH() ? ['k', 'h'] : ['h'];
 
       accumulator.push(...replacedCharacters);
+    } else {
+      const replacement =
+        transliterateMap[currentCharacter] ??
+        (/\d/.test(currentCharacter) ? currentCharacter : splitWords);
 
-      return accumulator;
-    }, [])
+      const replacedCharacters = replacement.split('');
+
+      accumulator.push(...replacedCharacters);
+    }
+
+    return accumulator;
+  };
+
+  const formattedString = string
+    .split('')
+    .reduce(
+      (accumulator: HAfterConfig, currentCharacter: string) =>
+        formatterHAfter(accumulator, currentCharacter),
+      [],
+    )
     .join('')
     .replace(HYPHEN_REGEX, splitWords)
     .replace(HYPHENS_REGEX, '');
 
-  return letterCase === 'lower' ? formattedText.toLowerCase() : formattedText;
+  const result =
+    letterCase === 'lower' ? formattedString.toLowerCase() : formattedString;
+
+  return result;
 };
 
 export { slugger };

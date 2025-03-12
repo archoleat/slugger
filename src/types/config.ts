@@ -1,4 +1,4 @@
-type HAfterConfig = 'k' | 'z' | 'c' | 's' | 'e' | 'h';
+type HAfterConfig = Array<'k' | 'z' | 'c' | 's' | 'e' | 'h'>;
 
 type Config = {
   letterCase?: 'lower' | 'initial';
@@ -13,7 +13,7 @@ type Config = {
   Щ?: 'Shch' | 'Sch' | 'Shh';
   э?: 'eh' | 'e';
   Э?: 'Eh' | 'E';
-  hAfter?: Array<HAfterConfig> | 'always';
+  hAfter?: HAfterConfig | 'always';
 };
 
 export type { Config, HAfterConfig };
