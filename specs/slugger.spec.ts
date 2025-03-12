@@ -31,9 +31,9 @@ describe('Slugger Function', () => {
       },
     ];
 
-    for (const { text, output } of specs) {
+    specs.forEach(async ({ text, output }) => {
       expect(await slugger(text)).toBe(output);
-    }
+    });
   });
 
   spec('should handle letter case', async () => {
@@ -50,9 +50,9 @@ describe('Slugger Function', () => {
       },
     ];
 
-    for (const { text, config, output } of specs) {
+    specs.forEach(async ({ text, output, config }) => {
       expect(await slugger(text, config)).toBe(output);
-    }
+    });
   });
 
   spec('should support custom replacements', async () => {
@@ -85,9 +85,9 @@ describe('Slugger Function', () => {
       },
     ];
 
-    for (const { text, config, output } of specs) {
+    specs.forEach(async ({ text, output, config }) => {
       expect(await slugger(text, config)).toBe(output);
-    }
+    });
   });
 
   spec('should handle custom separators', async () => {
@@ -109,9 +109,9 @@ describe('Slugger Function', () => {
       },
     ];
 
-    for (const { text, config, output } of specs) {
+    specs.forEach(async ({ text, output, config }) => {
       expect(await slugger(text, config)).toBe(output);
-    }
+    });
   });
 
   spec('should handle hAfter configuration', async () => {
@@ -133,9 +133,9 @@ describe('Slugger Function', () => {
       },
     ];
 
-    for (const { text, config, output } of specs) {
+    specs.forEach(async ({ text, output, config }) => {
       expect(await slugger(text, config)).toBe(output);
-    }
+    });
   });
 
   spec('should handle edge cases', async () => {
@@ -160,8 +160,8 @@ describe('Slugger Function', () => {
       },
     ];
 
-    for (const { text, config, output } of specs) {
+    specs.forEach(async ({ text, output, config }) => {
       expect(await slugger(text, config)).toBe(output);
-    }
+    });
   });
 });
