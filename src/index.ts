@@ -5,7 +5,7 @@ import { Config, HAfterConfig } from '#types/config.ts';
 const slugger = async (string: string, config: Config = {}): Promise<string> => {
   const {
     letterCase = 'lower',
-    splitWords = '-',
+    splitCharacter = '-',
     ё = 'yo',
     Ё = 'Yo',
     й = 'j',
@@ -103,7 +103,7 @@ const slugger = async (string: string, config: Config = {}): Promise<string> => 
     } else {
       const replacement =
         transliterateMap[currentCharacter] ??
-        (/\d/.test(currentCharacter) ? currentCharacter : splitWords);
+        (/\d/.test(currentCharacter) ? currentCharacter : splitCharacter);
 
       const replacedCharacters = replacement.split('');
 
@@ -114,6 +114,7 @@ const slugger = async (string: string, config: Config = {}): Promise<string> => 
   };
 
   const formattedString = string
+    .replace(/[^\p{L}\d\s_.-]/iu, '')
     .split('')
     .reduce(
       (accumulator: HAfterConfig, currentCharacter: string) =>
@@ -121,7 +122,7 @@ const slugger = async (string: string, config: Config = {}): Promise<string> => 
       [],
     )
     .join('')
-    .replace(HYPHEN_REGEX, splitWords)
+    .replace(HYPHEN_REGEX, splitCharacter)
     .replace(HYPHENS_REGEX, '');
 
   const result =

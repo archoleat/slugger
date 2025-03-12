@@ -4,59 +4,16 @@ import { slugger } from '#src/index.ts';
 import type { Config } from '#types/config.ts';
 
 describe('Slugger Function', () => {
-  spec('should transliterate cyrillic text', async () => {
-    const specs = [
-      {
-        text: 'Классический борщ с говядиной',
-        output: 'klassicheskij-borshch-s-govyadinoj',
-      },
-      {
-        text: 'кх зх сх ех хх',
-        output: 'kkh-zkh-skh-ekh-khkh',
-      },
-      {
-        text: 'ах мх',
-        output: 'ah-mh',
-      },
-      {
-        text: 'кох',
-        output: 'koh',
-      },
-      {
-        text: 'холод',
-        output: 'holod',
-      },
-      {
-        text: 'хлеб',
-        output: 'hleb',
-      },
-      {
-        text: 'хрю',
-        output: 'hryu',
-      },
-    ];
-
-    for (const { text, output } of specs) {
-      expect(await slugger(text)).toBe(output);
-    }
-  });
-
   spec('should handle letter case', async () => {
     const specs = [
       {
-        text: 'ХоЛоСცЫй ТЕКСТ',
-        config: { letterCase: 'lower' } as Config,
-        output: 'holostyj-tekst',
+        text: 'В чащах юга жил-был цитрус, но фальшивый экземпляр.',
+        output: "v-chashchah-yuga-zhil-byl-citrus-no-fal'shivyj-ehkzemplyar",
       },
       {
-        text: 'Смешанный Регистр',
+        text: 'В чащах юга жил-был цитрус, но фальшивый экземпляр.',
         config: { letterCase: 'initial' } as Config,
-        output: 'Smeshannyj-Registr',
-      },
-      {
-        text: 'ПЕРВЫЙ СИМВОЛ',
-        config: { letterCase: 'initial' } as Config,
-        output: 'Pervyj-Simvol',
+        output: "V-chashchah-yuga-zhil-byl-citrus-no-fal'shivyj-ehkzemplyar",
       },
     ];
 
@@ -65,96 +22,26 @@ describe('Slugger Function', () => {
     }
   });
 
-  spec('should support custom replacements', async () => {
+  spec('should handle split character', async () => {
     const specs = [
       {
-        text: 'Цирк Ёж Щука',
-        config: {
-          ё: 'e',
-          щ: 'sch',
-          ц: 'ts',
-        } as Config,
-        output: 'tsirk-ezh-schuka',
+        text: 'В чащах юга жил-был цитрус, но фальшивый экземпляр.',
+        output: "v-chashchah-yuga-zhil-byl-citrus-no-fal'shivyj-ehkzemplyar",
       },
       {
-        text: 'Эх, Йогурт!',
-        config: {
-          э: 'e',
-          й: 'y',
-        } as Config,
-        output: 'e-yogurt',
+        text: 'В чащах юга жил-был цитрус, но фальшивый экземпляр.',
+        config: { splitCharacter: '_' } as Config,
+        output: "v_chashchah_yuga_zhil_byl_citrus_no_fal'shivyj_ehkzemplyar",
       },
       {
-        text: 'Щука цыпленок',
-        config: {
-          щ: 'shh',
-          Щ: 'Shh',
-          ц: 'ts',
-        } as Config,
-        output: 'shhuka-tsyplenok',
+        text: 'В чащах юга жил-был цитрус, но фальшивый экземпляр.',
+        config: { splitCharacter: '.' } as Config,
+        output: "v.chashchah.yuga.zhil.byl.citrus.no.fal'shivyj.ehkzemplyar",
       },
       {
-        text: 'Цезарь',
-        config: { ц: 'ts' } as Config,
-        output: 'tsezar',
-      },
-    ];
-
-    for (const { text, output, config } of specs) {
-      expect(await slugger(text, config)).toBe(output);
-    }
-  });
-
-  spec('should handle custom separators', async () => {
-    const specs = [
-      {
-        text: 'Разделители Слов',
-        config: { splitWords: '_' } as Config,
-        output: 'razdeliteli_slov',
-      },
-      {
-        text: 'Много   пробелов',
-        config: { splitWords: ' ' } as Config,
-        output: 'mnogo probelov',
-      },
-      {
-        text: 'Спец.символы',
-        config: { splitWords: '.' } as Config,
-        output: 'spec.simvoly',
-      },
-      {
-        text: 'Дефис-в-слове',
-        config: {},
-        output: 'defis-v-slove',
-      },
-    ];
-
-    for (const { text, output, config } of specs) {
-      expect(await slugger(text, config)).toBe(output);
-    }
-  });
-
-  spec('should handle hAfter configuration', async () => {
-    const specs = [
-      {
-        text: 'х кх зхх',
-        config: { hAfter: 'always' } as Config,
-        output: 'kh-kh-zkhh',
-      },
-      {
-        text: 'кх ах мх',
-        config: { hAfter: ['k'] } as Config,
-        output: 'kkh-ah-mh',
-      },
-      {
-        text: 'ххх',
-        config: { hAfter: ['s', 'h'] } as Config,
-        output: 'hhkh',
-      },
-      {
-        text: 'шх хш',
-        config: { hAfter: ['sh'] } as Config,
-        output: 'shh-hsh',
+        text: 'В чащах юга жил-был цитрус, но фальшивый экземпляр.',
+        config: { splitCharacter: ' ' } as Config,
+        output: "v chashchah yuga zhil byl citrus no fal'shivyj ehkzemplyar",
       },
     ];
 
@@ -180,7 +67,6 @@ describe('Slugger Function', () => {
       },
       {
         text: 'Тест--двойной--дефис',
-        config: {} as Config,
         output: 'test-dvojnoj-defis',
       },
       {

@@ -2,7 +2,7 @@ type HAfterConfig = Array<'k' | 'z' | 'c' | 's' | 'e' | 'h'>;
 
 type Config = {
   letterCase?: 'lower' | 'initial';
-  splitWords?: '-' | '_' | ' ' | '.';
+  splitCharacter?: '-' | '_' | ' ' | '.';
   ё?: 'yo' | 'e';
   Ё?: 'Yo' | 'E';
   й?: 'j' | 'y';
