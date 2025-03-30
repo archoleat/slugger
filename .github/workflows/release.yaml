@@ -48,7 +48,7 @@ jobs:
         run: bun i
 
       - name: Build
-        run: bun rollup -c rollup.config.ts --configPlugin typescript
+        run: bun rollup -c --configPlugin typescript
 
       - name: Prettify
         run: bun prettier 'index.d.ts' --write
