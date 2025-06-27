@@ -29,7 +29,8 @@ import { slugger } from '@archoleat/slugger';
 
 const url = await slugger('Кто такой фронтенд-разработчик и как им стать');
 
-console.log(url) // kto-takoj-frontend-razrabotchik-i-kak-im-stat'
+// kto-takoj-frontend-razrabotchik-i-kak-im-stat'
+console.log(url)
 ```
 
 ## Contributing

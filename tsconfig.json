@@ -1,22 +1,16 @@
 {
   "compilerOptions": {
-    // Completeness
     "skipLibCheck": true,
-    // Emit
     "declaration": true,
     "emitDeclarationOnly": true,
     "outDir": "",
-    // Language and Environment
     "lib": ["ESNext"],
     "target": "ESNext",
-    // Modules
     "allowImportingTsExtensions": true,
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "rootDir": "src",
-    // Projects
     "disableReferencedProjectLoad": true,
-    // Type Checking
     "allowUnreachableCode": false,
     "allowUnusedLabels": false,
     "exactOptionalPropertyTypes": true,
