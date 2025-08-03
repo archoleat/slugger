@@ -24,12 +24,59 @@ bun i -D @archoleat/slugger
 
 ## Usage
 
+With Yandex Config:
 ```js
 import { slugger } from '@archoleat/slugger';
 
-const url = await slugger('Кто такой фронтенд-разработчик и как им стать');
+const url = await slugger('Кто такой фронтенд-разработчик. И как им стать?');
 
 // kto-takoj-frontend-razrabotchik-i-kak-im-stat'
+console.log(url)
+```
+
+With your config:
+```js
+import { slugger } from '@archoleat/slugger';
+
+const url = await slugger(
+  'Кто такой фронтенд-разработчик. И как им стать?',
+  {
+    а: 'a',
+    б: 'b',
+    в: 'v',
+    г: 'g',
+    д: 'd',
+    е: 'e',
+    ё: 'yo',
+    ж: 'zh',
+    з: 'z',
+    и: 'i',
+    й: 'i',
+    к: 'k',
+    л: 'l',
+    м: 'm',
+    н: 'n',
+    о: 'o',
+    п: 'p',
+    р: 'r',
+    с: 's',
+    т: 't',
+    у: 'u',
+    ф: 'f',
+    х: 'h',
+    ц: 'c',
+    ч: 'c',
+    ш: 'sh',
+    щ: 'shch',
+    ъ: 'j',
+    ы: 'y',
+    э: 'eh',
+    ю: 'yu',
+    я: 'ya',
+  },
+);
+
+// kto-takoi-frontend-razrabotcik-i-kak-im-stat
 console.log(url)
 ```
 
