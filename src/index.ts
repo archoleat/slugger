@@ -1,5 +1,8 @@
-const slugger = async (text: string): Promise<string> => {
-  const transliterateMap: Record<string, string> = {
+const slugger = async (
+  text: string,
+  config?: Record<string, string>,
+): Promise<string> => {
+  const transliterateMap: Record<string, string> = config ?? {
     а: 'a',
     б: 'b',
     в: 'v',
@@ -40,12 +43,13 @@ const slugger = async (text: string): Promise<string> => {
     .split('')
     .map((character) => {
       if (transliterateMap[character]) return transliterateMap[character];
-      if (/[0-9]/.test(character)) return character;
+      if (/\d/.test(character)) return character;
+
       return '-';
     })
     .join('')
-    .replace(/[-]+/g, '-')
-    .replace(/^-|-$/g, '');
+    .replace(/-+/g, '-')
+    .replace(/(^-|-$)/g, '');
 };
 
 export { slugger };
