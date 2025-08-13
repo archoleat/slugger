@@ -1,7 +1,7 @@
 {
   "name": "@archoleat/slugger",
   "description": "Transliterates Cyrillic to Latin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "author": {
     "email": "archoleat@gmail.com",
