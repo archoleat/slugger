@@ -44,7 +44,6 @@ const slugger = async (
     .map((character) => {
       if (transliterateMap[character]) return transliterateMap[character];
       if (/\d/.test(character)) return character;
-
       return '-';
     })
     .join('')
