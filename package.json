@@ -44,6 +44,9 @@
   "scripts": {
     "init": "bun i && husky"
   },
+  "dependencies": {
+    "tslib": "^2.8.1"
+  },
   "devDependencies": {
     "@archoleat/commitlint-define-config": "^1.1.0",
     "@archoleat/eslint-flat-compatibility": "^1.2.1",
@@ -82,7 +85,6 @@
     "rollup": "^4.46.2",
     "rollup-plugin-dts": "^6.2.1",
     "rollup-plugin-esbuild": "^6.2.1",
-    "semantic-release": "^24.2.7",
-    "tslib": "^2.8.1"
+    "semantic-release": "^24.2.7"
   }
 }
