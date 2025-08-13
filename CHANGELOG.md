@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.2](https://github.com/archoleat/slugger/compare/v1.0.1...v1.0.2) (2025-08-13)
+
+### Reverts
+
+* changes ([5c42151](https://github.com/archoleat/slugger/commit/5c421517fb4d0923e48cb7c8a9e0ea9d595f1ed7))
+
 ## [1.0.1](https://github.com/archoleat/slugger/compare/v1.0.0...v1.0.1) (2025-08-13)
 
 ### Bug Fixes
