@@ -1,7 +1,8 @@
 {
   "exclude": [
-    "config.yml",
     "CHANGELOG.md",
-    "README.md"
+    "config.yml",
+    "README.md",
+    "semantic-pull-request-title.yaml"
   ]
 }
