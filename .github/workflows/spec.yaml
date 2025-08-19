@@ -6,12 +6,14 @@ on:
       - main
     paths:
       - 'package.json'
+      - 'README.md'
       - 'src/**/*.ts'
   push:
     branches:
       - main
     paths:
       - 'package.json'
+      - 'README.md'
       - 'src/**/*.ts'
 
 permissions:
