@@ -3,7 +3,7 @@ import { slugger } from '#src/index.ts';
 
 describe('Slugger Function', () => {
   spec('should transliterate cyrillic text', async () => {
-    const result = await slugger('Классический борщ с говядиной');
+    const result = slugger('Классический борщ с говядиной');
 
     expect(result).toBe('klassicheskij-borshch-s-govyadinoj');
   });
@@ -17,7 +17,7 @@ describe('Slugger Function', () => {
     ];
 
     for (const { input, output } of tests) {
-      expect(await slugger(input)).toBe(output);
+      expect(slugger(input)).toBe(output);
     }
   });
 
@@ -33,7 +33,7 @@ describe('Slugger Function', () => {
     ];
 
     for (const { input, output } of tests) {
-      expect(await slugger(input)).toBe(output);
+      expect(slugger(input)).toBe(output);
     }
   });
 
@@ -47,7 +47,7 @@ describe('Slugger Function', () => {
 
     for (const { input, output } of tests) {
       expect(
-        await slugger(input, {
+        slugger(input, {
           а: 'a',
           б: 'b',
           в: 'v',
@@ -86,9 +86,9 @@ describe('Slugger Function', () => {
   });
 
   spec('should handle edge cases', async () => {
-    expect(await slugger('')).toBe('');
-    expect(await slugger('   ')).toBe('');
-    expect(await slugger('123')).toBe('123');
-    expect(await slugger('Привет Мир')).toBe('privet-mir');
+    expect(slugger('')).toBe('');
+    expect(slugger('   ')).toBe('');
+    expect(slugger('123')).toBe('123');
+    expect(slugger('Привет Мир')).toBe('privet-mir');
   });
 });
