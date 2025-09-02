@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.3](https://github.com/archoleat/slugger/compare/v1.0.2...v1.0.3) (2025-09-02)
+
+### Code Refactoring
+
+* .editorconfig-checker.json ([4b96cdb](https://github.com/archoleat/slugger/commit/4b96cdb0d2815c2d67cc388193302f72afbdf00f))
+* action ([#40](https://github.com/archoleat/slugger/issues/40)) ([535eba9](https://github.com/archoleat/slugger/commit/535eba9d65d1ec447c0e92a8b261b1897800e65c))
+* actions ([#39](https://github.com/archoleat/slugger/issues/39)) ([53c11a2](https://github.com/archoleat/slugger/commit/53c11a25ad96507c1d786b35c604257e2a44c9bc))
+* dependabot ([#32](https://github.com/archoleat/slugger/issues/32)) ([511bc8d](https://github.com/archoleat/slugger/commit/511bc8d2d4c26ff6650f4db99c9c95da310b1a16))
+* remove async ([#41](https://github.com/archoleat/slugger/issues/41)) ([c3912c2](https://github.com/archoleat/slugger/commit/c3912c2fb4b487d509825d636b838de9d531cced))
+* spec ([#38](https://github.com/archoleat/slugger/issues/38)) ([bdded4f](https://github.com/archoleat/slugger/commit/bdded4ff1241bd96181c3ec4185fe732e1f8d08c))
+
 ## [1.0.2](https://github.com/archoleat/slugger/compare/v1.0.1...v1.0.2) (2025-08-13)
 
 ### Reverts
