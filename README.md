@@ -28,7 +28,7 @@ With Yandex Config:
 ```js
 import { slugger } from '@archoleat/slugger';
 
-const url = await slugger('Кто такой фронтенд-разработчик. И как им стать?');
+const url = slugger('Кто такой фронтенд-разработчик. И как им стать?');
 
 // kto-takoj-frontend-razrabotchik-i-kak-im-stat'
 console.log(url)
@@ -38,7 +38,7 @@ With your config:
 ```js
 import { slugger } from '@archoleat/slugger';
 
-const url = await slugger(
+const url = slugger(
   'Кто такой фронтенд-разработчик. И как им стать?',
   {
     а: 'a',
