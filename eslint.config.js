@@ -1,13 +1,12 @@
 import { defineFlatConfig } from 'eslint-define-config';
-import { extend } from '@archoleat/eslint-flat-compatibility';
 import globals from 'globals';
+import importPlugin from 'eslint-plugin-import';
 import importSortPlugin from 'eslint-plugin-simple-import-sort';
 import parser from '@typescript-eslint/parser';
 import prettierConfig from 'eslint-config-prettier';
 import unicornPlugin from 'eslint-plugin-unicorn';
 
 export default defineFlatConfig([
-  ...extend('airbnb-base', 'airbnb-typescript/base'),
   {
     files: ['src/**/*.ts'],
     languageOptions: {
@@ -18,7 +17,6 @@ export default defineFlatConfig([
       },
       parserOptions: {
         ecmaVersion: 'latest',
-        project: 'tsconfig.json',
       },
       sourceType: 'module',
     },
@@ -31,6 +29,7 @@ export default defineFlatConfig([
     },
     plugins: {
       'simple-import-sort': importSortPlugin,
+      import: importPlugin,
       unicorn: unicornPlugin,
     },
     rules: {
