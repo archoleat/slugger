@@ -91,4 +91,12 @@ describe('Slugger Function', () => {
     expect(slugger('123')).toBe('123');
     expect(slugger('Привет Мир')).toBe('privet-mir');
   });
+
+  spec('should without config', async () => {
+    expect(slugger('', {})).toBe('');
+    expect(slugger('   ', {})).toBe('');
+    expect(slugger('123', {})).toBe('123');
+    expect(slugger('Привет Мир', {})).toBe('привет-мир');
+    expect(slugger('8. クッキーの利用', {})).toBe('8-クッキーの利用');
+  });
 });
