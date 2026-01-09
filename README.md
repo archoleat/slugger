@@ -80,6 +80,19 @@ const url = slugger(
 console.log(url)
 ```
 
+Without config:
+```js
+import { slugger } from '@archoleat/slugger';
+
+const url = slugger(
+  'Кто такой фронтенд-разработчик. И как им стать?',
+  {},
+);
+
+// кто-такой-фронтенд-разработчик-и-как-им-стать
+console.log(url)
+```
+
 ## Contributing
 
 Please read [**CONTRIBUTING**](https://github.com/archoleat/.github/blob/main/CONTRIBUTING.md)
