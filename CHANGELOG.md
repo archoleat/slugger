@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.4](https://github.com/archoleat/slugger/compare/v1.0.3...v1.0.4) (2026-01-09)
+
+### Code Refactoring
+
+* slug ([#51](https://github.com/archoleat/slugger/issues/51)) ([2ce3638](https://github.com/archoleat/slugger/commit/2ce3638927307eaf123c8036f7e000f9097b5c3f))
+
 ## [1.0.3](https://github.com/archoleat/slugger/compare/v1.0.2...v1.0.3) (2025-09-02)
 
 ### Code Refactoring
