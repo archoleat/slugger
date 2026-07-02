@@ -1,5 +1,16 @@
 # Changelog
 
+## [1.0.5](https://github.com/archoleat/slugger/compare/v1.0.4...v1.0.5) (2026-07-01)
+
+### Bug Fixes
+
+* actions ([1bbf4a0](https://github.com/archoleat/slugger/commit/1bbf4a0ca2cbc129b6b6d69760884e22e2772cc6))
+* bun version ([4fd0483](https://github.com/archoleat/slugger/commit/4fd0483477c948fe8438cf829578fc48ac4b5ae6))
+
+### Code Refactoring
+
+* release.yaml ([3e9d5d1](https://github.com/archoleat/slugger/commit/3e9d5d15f0ba28a37996f2f2f793026dec954ade))
+
 ## [1.0.4](https://github.com/archoleat/slugger/compare/v1.0.3...v1.0.4) (2026-01-09)
 
 ### Code Refactoring
