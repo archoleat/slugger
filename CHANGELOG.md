@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.6](https://github.com/archoleat/slugger/compare/v1.0.5...v1.0.6) (2026-09-15)
+
+### Bug Fixes
+
+* **ci:** declare TypeScript and use client-id ([677b52b](https://github.com/archoleat/slugger/commit/677b52b2bada8fd5578b1b55014b4322e4f5bf4e))
+* **release:** use compatible changelog preset ([ba844fb](https://github.com/archoleat/slugger/commit/ba844fb8d4192c92fc089d458e2b32b4be0a5f59))
+
 ## [1.0.5](https://github.com/archoleat/slugger/compare/v1.0.4...v1.0.5) (2026-07-01)
 
 ### Bug Fixes
