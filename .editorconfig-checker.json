@@ -3,6 +3,7 @@
     "CHANGELOG.md",
     "config.yml",
     "README.md",
+    "release.yaml",
     "semantic-pull-request-title.yaml"
   ]
 }
