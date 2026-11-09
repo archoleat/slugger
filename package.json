@@ -22,9 +22,6 @@
     "slugger",
     "typescript"
   ],
-  "engines": {
-    "bun": ">=1.0.0"
-  },
   "type": "module",
   "types": "index.d.ts",
   "imports": {

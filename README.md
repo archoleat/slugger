@@ -13,6 +13,7 @@
 ## Table of Contents
 
 - [Installation](#installation)
+- [Runtime](#runtime)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
@@ -24,6 +25,13 @@ bun i @archoleat/slugger
 ```
 
 Use `bun i -D @archoleat/slugger` when it is used only by build tooling.
+
+## Runtime
+
+The package is an ES module with no runtime dependencies. It can be imported
+in Node.js or a browser bundle with support for Unicode property escapes in
+regular expressions. Bun is used for repository tooling, not required by the
+published module.
 
 ## Usage
 
@@ -101,6 +109,12 @@ Different inputs can produce the same slug: `slugger('Кот')` and
 check for collisions in persistent storage and append a stable ID or suffix
 when using them as resource URLs. The default mapping also preserves a soft
 sign as an apostrophe; encode the result when inserting it into a URL.
+
+The default map targets Cyrillic transliteration, not every writing system.
+For example, `slugger('東京 😀 café')` returns `caf`, while passing `{}` as
+the map returns `東京-café`. Combining marks are not preserved, and no Unicode
+normalization is performed; normalize input upstream if your application
+requires canonically equivalent text to produce the same URL.
 
 ## Contributing
 
