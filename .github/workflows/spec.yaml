@@ -9,6 +9,7 @@ on:
       - main
     paths:
       - 'package.json'
+      - 'patches/**'
       - 'README.md'
       - 'src/**/*.ts'
       - 'src/**'
@@ -60,6 +61,7 @@ jobs:
 
           if git diff --quiet "$BASE_SHA...$HEAD_SHA" -- \
               ':(glob)package.json' \
+              ':(glob)patches/**' \
               ':(glob)README.md' \
               ':(glob)src/**/*.ts' \
               ':(glob)src/**' \
