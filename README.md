@@ -20,8 +20,10 @@
 ## Installation
 
 ```shell
-bun i -D @archoleat/slugger
+bun i @archoleat/slugger
 ```
+
+Use `bun i -D @archoleat/slugger` when it is used only by build tooling.
 
 ## Usage
 
@@ -93,6 +95,12 @@ const url = slugger(
 // кто-такой-фронтенд-разработчик-и-как-им-стать
 console.log(url)
 ```
+
+Different inputs can produce the same slug: `slugger('Кот')` and
+`slugger('кот!')` both return `kot`. Slugs are not unique identifiers;
+check for collisions in persistent storage and append a stable ID or suffix
+when using them as resource URLs. The default mapping also preserves a soft
+sign as an apostrophe; encode the result when inserting it into a URL.
 
 ## Contributing
 
