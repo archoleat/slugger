@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.8](https://github.com/archoleat/slugger/compare/v1.0.7...v1.0.8) (2026-11-09)
+
+### Bug Fixes
+
+* align npm keywords with repository topics ([7418e2f](https://github.com/archoleat/slugger/commit/7418e2f0d214f95174ddc383e918ab712892f445))
+
 ## [1.0.7](https://github.com/archoleat/slugger/compare/v1.0.6...v1.0.7) (2026-11-09)
 
 ### Bug Fixes
