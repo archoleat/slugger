@@ -1,7 +1,7 @@
 {
   "name": "@archoleat/slugger",
   "description": "Russian Cyrillic transliteration and slug generation with custom character mappings.",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "license": "MIT",
   "author": {
     "email": "archoleat@gmail.com",

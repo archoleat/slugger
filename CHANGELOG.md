@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.9](https://github.com/archoleat/slugger/compare/v1.0.8...v1.0.9) (2026-11-09)
+
+### Bug Fixes
+
+* align package description with repository metadata ([c70ec6d](https://github.com/archoleat/slugger/commit/c70ec6ded214665a1fe529e8c1cc5cc6f74ed6ca))
+
 ## [1.0.8](https://github.com/archoleat/slugger/compare/v1.0.7...v1.0.8) (2026-11-09)
 
 ### Bug Fixes
