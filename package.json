@@ -18,8 +18,10 @@
   },
   "keywords": [
     "archoleat",
-    "cyrillic-to-latin",
-    "slugger",
+    "cyrillic",
+    "slug",
+    "string-manipulation",
+    "transliteration",
     "typescript"
   ],
   "type": "module",
